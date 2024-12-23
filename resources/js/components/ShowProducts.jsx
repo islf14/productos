@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Api from '../Api';
 import { Link } from 'react-router';
 
-const ShowProduct = () => {
+const ShowProducts = () => {
 
   const [ products, setProducts] = useState([]);
 
@@ -11,15 +11,29 @@ const ShowProduct = () => {
   }, []);
 
   const getAllProducts = async () => {
-    const response = await Api.getAllProducts();
-    setProducts(response.data);
-    console.log(response.data);
-  }
+    const response = await Api.getAllProducts().then(
+      response => {
+        if (typeof response.data !== 'string'){
+          try {
+            const type = Object.prototype.toString.call(response.data);
+            if( type === '[object Object]' || type === '[object Array]'){
+              setProducts(response.data);
+              console.log("Productos cargados");
+            }
+          } catch (err) { console.log(err); }
+        } else console.log("Error, string recibido desde el servidor.");
+      }
+    ).catch(error => { console.log(error) });
+  };
 
   const deleteProduct = async (id) => {
-    const isDelete = window.confirm("Borrar Categoría?");
+    const isDelete = window.confirm("Borrar producto?");
     if(isDelete){
-      await Api.deleteProduct(id);
+      await Api.deleteProduct(id).then(
+        response => {
+          response.status == 200 ? console.log("Eliminado correctamente") : "";
+        }
+      ).catch(error => { console.log(error) });
       getAllProducts();
     }
   }
@@ -58,4 +72,4 @@ const ShowProduct = () => {
   )
 }
 
-export default ShowProduct
+export default ShowProducts
