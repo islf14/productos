@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Api from '../Api';
 
 const CreateProduct = () => {
@@ -22,7 +22,10 @@ const CreateProduct = () => {
   }
 
   return (
-    <div className=''>
+    <div className='m-8'>
+      <div className='max-w-md mx-auto mb-4'>
+        <Link to={'/'} className='bg-blue-500 text-white py-2 rounded-md cursor-pointer hover:bg-violet-900 p-3'>Regresar</Link>
+      </div>
       <h3 className='max-w-md mx-auto mb-4 text-lg'>Create product</h3>
       <form onSubmit={store} className='max-w-md mx-auto'>
         <div className='relative z-0 w-full mb-5 group'>

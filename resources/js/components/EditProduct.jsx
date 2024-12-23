@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Api from '../Api';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 
 const EditProduct = () => {
 
@@ -36,7 +36,10 @@ const EditProduct = () => {
   }, []);
 
   return (
-    <div className=''>
+    <div className='m-8'>
+      <div className='max-w-md mx-auto mb-4'>
+        <Link to={'/'} className='bg-blue-500 text-white py-2 rounded-md cursor-pointer hover:bg-violet-900 p-3'>Regresar</Link>
+      </div>
       <h3 className='max-w-md mx-auto mb-4 text-lg'>Edit product</h3>
       <form onSubmit={update} className='max-w-md mx-auto'>
         <div className='relative z-0 w-full mb-5 group'>

@@ -39,8 +39,8 @@ const ShowProducts = () => {
   }
 
   return (
-    <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
-      <div className='container'>
+    <div className='m-8 relative overflow-x-auto shadow-md sm:rounded-lg'>
+      <div className='mb-4 p-4'>
         <Link to="/create" className='bg-blue-500 text-white py-2 rounded-md cursor-pointer hover:bg-violet-900 p-3'>Create</Link>
       </div>
       <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
