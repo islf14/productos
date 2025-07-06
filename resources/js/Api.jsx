@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_api_url = "http://127.0.0.1:8000/api";
+const base_api_url = `${window.location.origin}/api`;
 
 export default {
 
